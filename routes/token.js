@@ -10,6 +10,33 @@ const JWT_SECRET = process.env.JWT_SECRET; // Get the secret from environment va
 const saltRounds = 10; // Number of rounds for bcrypt password hashing
 
 // User registration route
+/**
+ * @swagger
+ * /register:
+ *   post:
+ *     summary: Register a new user
+ *     description: Registers a new user with a username and hashed password.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               username:
+ *                 type: string
+ *                 description: The username for the new user.
+ *                 example: testuser
+ *               password:
+ *                 type: string
+ *                 description: The password for the new user.
+ *                 example: testpassword
+ *     responses:
+ *       201:
+ *         description: User registered successfully.
+ *       500:
+ *         description: Server error.
+ */
 router.post('/register', async (req, res) => {
   const { username, password } = req.body;
 
@@ -26,6 +53,43 @@ router.post('/register', async (req, res) => {
 });
 
 // User login and token generation
+/**
+ * @swagger
+ * /login:
+ *   post:
+ *     summary: Login and generate a JWT token
+ *     description: Logs in with a username and password, and returns a JWT token upon successful login.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               username:
+ *                 type: string
+ *                 description: The username for login.
+ *                 example: testuser
+ *               password:
+ *                 type: string
+ *                 description: The password for login.
+ *                 example: testpassword
+ *     responses:
+ *       200:
+ *         description: Successful login and JWT token generation.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 token:
+ *                   type: string
+ *                   description: The generated JWT token.
+ *       401:
+ *         description: Invalid username or password.
+ *       500:
+ *         description: Server error.
+ */
 router.post('/login', async (req, res) => {
   const { username, password } = req.body;
 
