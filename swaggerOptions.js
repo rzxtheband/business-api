@@ -12,7 +12,7 @@ const swaggerOptions = {
         },
       ],
     },
-    apis: ['./app.js'], // Files where Swagger-JSDoc should look for definitions
+    apis: ['./app.js', './routes/*.js'], // Files where Swagger-JSDoc should look for definitions
 };
 
 module.exports = swaggerOptions;
