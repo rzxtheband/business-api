@@ -36,3 +36,11 @@ CREATE TABLE Address (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (customer_id) REFERENCES Customer(customer_id) ON DELETE CASCADE
 );
+
+-- Create the Users table
+CREATE TABLE Users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(50) UNIQUE,
+  password VARCHAR(255), -- Password should be hashed
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
