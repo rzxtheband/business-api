@@ -1,5 +1,7 @@
 const express = require('express');
 const app = express();
+const tokenRoute = require('./routes/token');
+const authRoute = require('./routes/auth');
 const businessRoutes = require('./routes/business');
 const customerRoutes = require('./routes/customer');
 const addressRoutes = require('./routes/address');
@@ -10,10 +12,11 @@ app.use(express.json()); // Parses JSON bodies
 app.use(express.urlencoded({ extended: true })); // Parses URL-encoded bodies
 
 // Define the routes
-app.use('/businesses', businessRoutes);
-app.use('/customers', customerRoutes);
-app.use('/addresses', addressRoutes);
-app.use('/business-details', businessDetailsRoutes);
+app.use('/token', tokenRoute);
+app.use('/businesses', authRoute,  businessRoutes);
+app.use('/customers', authRoute, customerRoutes);
+app.use('/addresses', authRoute, addressRoutes);
+app.use('/business-details', authRoute, businessDetailsRoutes);
 
 // Start the server
 const PORT = process.env.PORT || 3000;
