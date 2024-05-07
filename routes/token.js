@@ -12,7 +12,7 @@ const saltRounds = 10; // Number of rounds for bcrypt password hashing
 // User registration route
 /**
  * @swagger
- * /register:
+ * /token/register:
  *   post:
  *     summary: Register a new user
  *     description: Registers a new user with a username and hashed password.
@@ -55,7 +55,7 @@ router.post('/register', async (req, res) => {
 // User login and token generation
 /**
  * @swagger
- * /login:
+ * /token/login:
  *   post:
  *     summary: Login and generate a JWT token
  *     description: Logs in with a username and password, and returns a JWT token upon successful login.
