@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const businessRoutes = require('./routes/business');
 const customerRoutes = require('./routes/customer');
@@ -9,6 +10,7 @@ const path = require('path');
 // Add middleware to parse incoming JSON and URL-encoded bodies
 app.use(express.json()); // Parses JSON bodies
 app.use(express.urlencoded({ extended: true })); // Parses URL-encoded bodies
+app.use(cors());
 
 // Define the routes
 app.use('/businesses', businessRoutes);
