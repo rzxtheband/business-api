@@ -2,7 +2,7 @@ const mysql = require('mysql2');
 
 // Create the connection pool
 const pool = mysql.createPool({
-  host: 'srv922.hstgr.io', // Replace with your MySQL host
+  host: 'srv1336.hstgr.io', // Replace with your MySQL host
   user: 'u832555779_business_api', // Your MySQL user
   password: 'BusinessApiAdmin@123', // Your MySQL password
   database: 'u832555779_business_api', // Your MySQL database
